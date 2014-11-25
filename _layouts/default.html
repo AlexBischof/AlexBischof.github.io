@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     {% include head.html %}
-  </head>
-  <body>
-    <div class="container azul">
-      <header class="top row gutters{% if page.title == "Home" %} fadeInLeft animated{% endif %}">
-        <div class="col span_2 center">
-          <!-- TODO: add baseurl to the logo link -->
-          <a href="{{ site.url }}" id="logo" title="{{ site.data.brume.name }}"
-             style="background-image: url({{site.baseurl}}/public/images/profile_alex.jpg);"></a>
-        </div>
-        {% include navigation.html %}
-      </header>
+</head>
+<body>
+<div class="container azul">
+    <header class="top row gutters{% if page.title == " Home
+    " %} fadeInLeft animated{% endif %}">
+    <div class="col span_2 center">
+        <!-- TODO: add baseurl to the logo link -->
+        <a href="{{ site.url }}" id="logo" title="{{ site.data.brume.name }}"
+           style="background-image: url({{site.baseurl}}/public/images/profile_alex.jpg);"></a>
+        <a href="https://twitter.com/A_Bischof" class="twitter-follow-button" data-show-count="false">Follow
+            @A_Bischof</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');</script>
 
-      {{ content }}
-
-      <footer>
-        <p>
-          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.en_US">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-        </p>
-      </footer>
     </div>
+    {% include navigation.html %}
+    </header>
 
-    <!-- scripts -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="{{site.baseurl}}/public/js/jquery.fitvids.js"></script>
-    <script>
-      $(document).ready(function(){
+    {{ content }}
+
+    <footer>
+        <p>
+            This work is licensed under a <a rel="license"
+                                             href="http://creativecommons.org/licenses/by-nc/4.0/deed.en_US">Creative
+            Commons Attribution-NonCommercial 4.0 International License</a>.
+        </p>
+    </footer>
+</div>
+
+<!-- scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{site.baseurl}}/public/js/jquery.fitvids.js"></script>
+<script>
+    $(document).ready(function () {
         $("article").fitVids();
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
