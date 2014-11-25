@@ -1,12 +1,13 @@
-# Site settings
-title: Alexander Bischof Github.io
-email: alexanderxbischof@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Alexander Bischof - Softwaredevelopment in the Java universe.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://alexbischof.github.io" # the base hostname & protocol for your site
-twitter_username: A_Bischof
-github_username:  AlexBischof
+markdown: redcarpet
+highlighter: null
+permalink: /:title
 
-# Build settings
-markdown: kramdown
+url:
+baseurl:
+
+redcarpet:
+  extensions: [strikethrough, tables]
+
+sass:
+  sass_dir: public/css
+  style: :compressed

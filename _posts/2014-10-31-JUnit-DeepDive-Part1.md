@@ -9,11 +9,11 @@ Most of the Java developers know JUnit for many years and probably use it on a d
 JUnit evolves and so should we. Especially if your test code lacks in view of readability, understandability and clean code
 you should have a closer look at some of the newer features of JUnit.
 The upcoming blog series starting with this article covering the JUnit basics
-will take a close look on the internals, concepts and best practices of JUnit nowadays.<br/><br/>
+will take a close look on the internals, concepts and best practices of JUnit nowadays.<br/>
 
 JUnit (current version 4.11) itself is a test framework which provides some annotations, interfaces and utility classes
 which can be used to write test classes, lifecycle methods and test methods that will ensure the correctness of your business code.
-It is widely known and used and plays a big role when it comes to continuous integration and agile projects.<br/><br/>
+It is widely known and used and plays a big role when it comes to continuous integration and agile projects.<br/>
 
 <h2>Test classes</h2>
 
@@ -22,12 +22,12 @@ a lifecycle.
 Like many framework nowadays JUnit follows the CoC (Convention over Configuration)
 which basically means that you only have to declare things that are not part of the convention. That way your code keeps small and
 therefore is more readable and understandable. Considering JUnit test classes it means that you can provide your own <i>JUnitRunner</i> but JUnit already
-                                               provides a default <i>JUnitRunner</i> (internally mapped to <i>BlockJUnit4ClassRunner</i>). This default <i>JUnitRunner</i> inherits from <i>
+provides a default <i>JUnitRunner</i> (internally mapped to <i>BlockJUnit4ClassRunner</i>). This default <i>JUnitRunner</i> inherits from <i>
                                                 ParentRunner</i> which provides you
                                                a lifecycle which is shown in the following image and will be explained further in this article.
-                                               <img src="JUnitLifecycle_simple.png"/>
-                                               But keep in mind that this lifecycle represents only the default lifecycle. If you develop your own <i>JUnitRunner</i> or using other JUnit-Rules it can be something really different.
-                                               But those topics i will cover in another blog post.<br/>
+<img src="{{site.baseurl}}/public/images/2014-10-31-JUnitLifecycle_simple.png"/>
+But keep in mind that this lifecycle represents only the default lifecycle. If you develop your own <i>JUnitRunner</i> or using other JUnit-Rules it can be something really different.
+But those topics i will cover in another blog post.<br/>
 
 <h2>Lifecycle methods</h2>
 A lifecycle method here is a method which is marked with one of the following annotations and can be used to configure your tests.
@@ -57,7 +57,7 @@ A lifecycle method here is a method which is marked with one of the following an
             underlying JVM</td>
         </tr>
 </table>
-As already mentioned above this is just the half truth because since JUnit 4.7 the concept of rules are integrated.<br/><br/>
+As already mentioned above this is just the half truth because since JUnit 4.7 the concept of rules are integrated.<br/>
 
 One important point: As you can see in the lifecycle diagram above both (the constructor and <i>@Before</i> annotated methods) are executed before each
 test method and therefore seem to have the same semantic (at least
@@ -75,7 +75,7 @@ from the test-method point of view). But there are some important differences to
 Looking at that it is reasonable to say prefer <i>@Before</i> to the constructor.<br/>
 
 One historical note: The usage of annotations is available since JUnit 4.0. Before that you had to follow a naming convention (e.g. test methods
-has to start with "test"). <br/><br/>
+has to start with "test"). <br/>
 
 <h2>Test methods</h2>
 A test method for JUnit is a non static, public method which is marked with a <i>@Test</i> annotation. Such a method should contain so
@@ -153,7 +153,7 @@ The following table shows the basic assertions which are part of the <i>Assert</
 Also note that every assert method is overloaded with an additional errorMessage
 String in front of the parameter list. This is considered best practice because it makes the assertion or assumption more
 readable and significant if something goes wrong (FYI: There is also an explicit
-                                                                       PMD-Rule <i>JUnitAssertionsShouldIncludeMessage</i> for that).<br/><br/>
+                                                                       PMD-Rule <i>JUnitAssertionsShouldIncludeMessage</i> for that).<br/>
 
 <table border="1">
     <tr>
@@ -197,7 +197,7 @@ So far i had only covered theory. Now i am giving a simple example which uses an
 The calculator here is specialized for integers but could be easily extended for other numeric types. Our functional methods
 would be add, subtract, multiply and divide.
 
-	<pre brush="java">
+	{% highlight java linenos%}
 public class Calculator {
 
 	public int add(int a, int b) {
@@ -215,7 +215,7 @@ public class Calculator {
 	public int divide(int a, int b) {
 		return a / b;
 	}
-}</pre>
+}{% endhighlight%}
 So far nothing special so let us have a look at the test. I created a test method for each public method of the
 calculator and used the
 <i>@Before</i> annotated method to initialize the calculator. That way each time before the test method is executed the calculator is newly initialized. The reason for
@@ -223,7 +223,7 @@ that is quite simple - i want to eliminate possible side effects in the future (
 and do not want to violate the DRY (Don't Repeat Yourself) principle (which would occur if i would initialize the calculator in every test
 method).
 <br/>
-	<pre brush="java">
+	{% highlight java linenos%}
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -274,13 +274,13 @@ public class CalculatorSimpleTest {
 		assertEquals(errorMessage, expected, add);
 	}
 }
-</pre>
+{% endhighlight%}
 As you can see every test method checks an expected value against an
 actual computation result. If there is a mismatch an assertion error is
 thrown. <br/>
 If something went wrong (here i changed the expected result of the multiply method) you can see corresponding error message.
 <br/>
-<img src="message.png"/>
+<img src="{{site.baseurl}}/public/images/2014-10-31-message.png"/>
 
 <h2>ExceptionHandling</h2>
 Now you are able to develop standard tests and in many cases this
@@ -288,19 +288,19 @@ should be sufficient (for the moment :)). But in view of testing
 exceptions your test classes can suffer really fast. Considering the
 calculator you can see easily that at least the divide method needs one
 more test.
-	<pre brush="java">
+	{% highlight java linenos%}
 	@Test
 	public void testDivide_WithZero_WillFail() {
 		assertEquals(0, calculator.divide(1, 0));
 	}
-	</pre>
+	{% endhighlight%}
 This test will fail because an
 <i>ArithmeticException</i> is thrown. But lets assume that this
 behavior (throwing the exception) is correct because i want the
 client handle the exception. So with a naive small refactoring i can get
 this.
 
-	<pre brush="java">
+	{% highlight java linenos%}
 	@Test
 	public void testDivide_WithZero_WillFail() {
 		try {
@@ -310,19 +310,19 @@ this.
 			// Bad
 		}
 	}
-	</pre>
+	{% endhighlight%}
 Ok, now i have tested the correct behavior but the resulting test code
 does not look good. I have boiler-plate code and doubled the size of my previous test code therefore it is less
 understandable. A better way to do that is using the
 <i>@Test</i> annotation the following way.
-	<pre brush="java">
+	{% highlight java linenos%}
 	@Test(expected = ArithmeticException.class)
 	public void testDivide_WithZero_WillFail() {
 		assertEquals(0, calculator.divide(1, 0));
 	}
-	</pre>
+	{% endhighlight%}
 This test method only fails if the
-<i>ArithmeticException</i> is not thrown.<br/><br/>
+<i>ArithmeticException</i> is not thrown.<br/>
 
 So this is what i consider as the JUnit basics but there will be more in the upcoming articles.<br/>
 Have fun coding.
