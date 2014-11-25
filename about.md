@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Alexander Bischof
+title: About
 permalink: /about/
 ---
 
