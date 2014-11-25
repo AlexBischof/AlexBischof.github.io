@@ -27,12 +27,11 @@ title: Archive
 {% endunless %}
 
   <article class="row gutters">
-    <a style="fontsize:110%" href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">{{ post.title }}</a>
+    <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">{{ post.title }}</a>
     <div class="post-date col span_4">
       <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time>
     </div>
   </article>
-
 {% if forloop.last %}</div></div>{% endif %}
 
 {% endfor %}
