@@ -4,10 +4,14 @@ category : pages
 tags : [Java, JBoss, Forge, JavaEE]
 disqusid : simple-forge
 ---
+<p>
+This article covers the simple usage of Forge to build up an application (or at least an almost complete stack for a prototype).
+So what is Forge? It is a command line tool to create and configure Java projects. You can setup different modules 
+(for example cdi or jpa) and Forge generates all resources needed. This can be anything from java classes to deployment
+ descriptors right up to java test classes or JSF files. On top of that this behavior is incremental, so that you can 
+ use it at any time you want.
+</p>
 
-This article covers the simple usage of Forge to build up an application (or at least an almost complete stack for a prototype).<br />
-So what is Forge? It is a command line tool to create and configure Java projects. You can setup different modules (for example cdi or jpa) and Forge generates all resources needed. This can be anything from java classes to deployment descriptors right up to java test classes or JSF files. On top of that this behavior is incremental, so that you can use it at any time you want.<br />
-<br />
 The setup of the modules is done by Convention over Configuration so that everything is quite simple and comprehensible. The Command line also supports tab-completion and makes the usage very fluent.<br />
 <br />
 You may ask why not Forge 2 (it is already in version 2.5.0). It is faster and a little bit easier but it lacks in one point: the Arquillian module is currently not migrated but it is planed.<br />
@@ -34,7 +38,7 @@ Now we want to build a simple JSF UI for the customer entity. At first we need t
 </pre>
 After this we can build our application with <i>build</i>&nbsp;and after deploying (which can also be done with Forge but this would be another topic) we can see the following JSF-Page. On the left side is our link to the customers where we can already create, search and delete customers. It also has a paging feature.<br />
 <div class="separator" style="clear: both; text-align: center;">
-    <a href="http://4.bp.blogspot.com/-aD-MwxP_yr8/U3xRxzDgRUI/AAAAAAAAAC0/CeFU1hJQRiY/s1600/Bildschirmfoto+2014-05-21+um+09.10.41.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-aD-MwxP_yr8/U3xRxzDgRUI/AAAAAAAAAC0/CeFU1hJQRiY/s1600/Bildschirmfoto+2014-05-21+um+09.10.41.png" height="177" width="400" /></a></div>
+    <a href="http://4.bp.blogspot.com/-aD-MwxP_yr8/U3xRxzDgRUI/AAAAAAAAAC0/CeFU1hJQRiY/s1600/Bildschirmfoto+2014-05-21+um+09.10.41.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><high border="0" src="http://4.bp.blogspot.com/-aD-MwxP_yr8/U3xRxzDgRUI/AAAAAAAAAC0/CeFU1hJQRiY/s1600/Bildschirmfoto+2014-05-21+um+09.10.41.png" height="177" width="400" /></a></div>
 <div>
     Ok - the GUI still must be customized but this is again another topic. The point is that i have spent so much time in the past to reach a state like this - now it is possible within just 2 minutes.</div>
 <br />

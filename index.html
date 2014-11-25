@@ -4,7 +4,7 @@ title: Home
 ---
 
 <section class="archive">
-{% for post in site.posts %}
+{% for post in site.posts limit:5%}
 {% unless post.next %}
 
 {% unless forloop.first %}</div></div>{% endunless %}
@@ -31,7 +31,9 @@ title: Home
     <div class="post-date col span_4">
       <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time>
     </div>
+      {{ post.excerpt | strip_html }}
   </article>
+        <br/>
 
 {% if forloop.last %}</div></div>{% endif %}
 
