@@ -1,8 +1,8 @@
 ---
 layout: post
 category : pages
-tags : [Java, CDI, RapidPM]
-disqusid : cdicontextresolver2
+tags : [Java, IOT, Tinkerforge, Testing]
+disqusid : mockingtinkerforge
 ---
 
 A couple of days have passed since the TinkerForge-API has been published on maven central. But what can you do with it if there is no hardware around. This was my situation
