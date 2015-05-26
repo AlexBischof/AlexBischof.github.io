@@ -108,6 +108,8 @@ or [AssertJ Assertions Generator](http://joel-costigliola.github.io/assertj/asse
 
 AFAIK there is now faster way to use your domain model assertions in your tests then this.
 
+The code for that can be found on my github repositoy: [https://github.com/AlexBischof/assertj-forge-addon](https://github.com/AlexBischof/assertj-forge-addon)
+
 
 
 
