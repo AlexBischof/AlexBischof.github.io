@@ -145,6 +145,8 @@ public class ValidationStrategyTest {
    
 If you are interested in the PoC you can find the sources on my [Github-Repository](https://github.com/AlexBischof/validationstrategy).
 
+*Note: If you are using JBoss Forge try out the new [JBoss Forge AssertJ addon](https://github.com/AlexBischof/assertj-forge-addon).*
+
 
 
 
