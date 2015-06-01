@@ -9,7 +9,7 @@ github_username:  AlexBischof
 
 
 markdown: redcarpet
-highlighter: null
+highlighter: pygments
 permalink: /:title
 
 redcarpet:
