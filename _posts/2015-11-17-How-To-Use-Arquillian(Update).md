@@ -45,7 +45,8 @@ diagram serves as a helper.
 Info:
 
 * Same/Separate JVM: refers to the test runner.
-* Fake/Real Container: this should be pretty obvious but can lead to some unexpected effects as you can read 
+* Isolated/Not Isolated Container: due to the JVM binding (same/separate) a container can have some unexpected effects
+ in not isolated containers as you can read 
 [here](http://arquillian.org/blog/2012/04/13/the-danger-of-embedded-containers).
 * Lifecycle Managed: Means that an container is started as well as shutdown.
 
@@ -59,9 +60,21 @@ The specific container provider can be divided further into the following three 
 
 In order to run an *Arquillian* test you need to do the following three steps:
 
-1. Provide an **arquillian.xml** which declares and configures containers (e.g. arquillian-wildfly-managed)
-2. Provide **arquillian container dependency** 
-3. Provide **arquillian test**
+* Provide an **arquillian.xml** which declares and configures containers (e.g. arquillian-wildfly-managed)
+* Provide **arquillian container dependency** 
+    {% highlight java linenos%}
+    <plugin>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>2.19</version>
+     <configuration>
+         <systemPropertyVariables>
+                <!-- reference to arquillian.xml container -->
+                <arquillian.launch>arquillian-wildfly-managed</arquillian.launch>
+            </systemPropertyVariables>
+     </configuration>
+    </plugin>
+    {% endhighlight %}
+* Provide **arquillian test**
 
 {% highlight java linenos%}
 @Stateless
