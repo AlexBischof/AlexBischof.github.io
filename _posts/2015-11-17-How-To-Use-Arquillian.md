@@ -73,7 +73,7 @@ public class ServiceFacade {
 
 {% highlight java linenos%}
 @RunWith(Arquillian.class)
-public class ServiceFacade_Hello_Test {
+public class ServiceFacadeHelloTest {
 
     @Inject ServiceFacade serviceFacade;
 
@@ -106,8 +106,12 @@ public class ServiceFacade_Hello_Test {
 {% endhighlight %}
 
 The snippet above is testing a simple session bean with *AssertJ* via *Arquillian*. The important part for using
-*Arquillian* is the *create* method which makes use of *ShrinkWrap* to create a web archive which is deploy to the container.
-The archive itself contains the *AssertJ* library, an empty *beans.xml* and the *ServiceFacade*.
+*Arquillian* is:
+ 
+1. Declare *Arquillian JUnit* runner with **@RunWith(Arquillian.class)**
+2. Provide an archive with a **static** method marked with **@Deployment** which is then deployed to the container. 
+In this case ShrinkWrap is used to create a web archive which contains the *AssertJ* library, an empty *beans.xml* and the *ServiceFacade*. 
+
 
 *Note: JBoss Forge provides already the arquillian-addon.*
 
